@@ -1,0 +1,24 @@
+cat << 'EOF' > pom.xml
+server:
+  port: 8080
+
+spring:
+  datasource: 
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/ousl_db?sslmode=require
+    username: ${DB_USER:postgresql}
+    password: ${DB_PASS:OuslCloudPass2026!}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+EOF
