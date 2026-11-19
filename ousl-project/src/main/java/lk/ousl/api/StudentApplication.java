@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.*;
 @SpringBootApplication
 @RestController
 @RequestMapping("api/students")
-public class DemoApplication {
+public class StudentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(StudentApplication.class , args);
 	}
 
 	private final StudentRepository repository;
-	public DemoApplication(StudentRepository repository) {
+	public StudentApplication(StudentRepository repository) {
 		this.repository = repository;
 	}
 
@@ -44,6 +44,7 @@ class Student {
 	private Long id;
 	private String name;
 	private String course;
+	private String address;
 
 	public Student() {}
 	public Student(String name, String course) {this.name = name; this.course = course; }
@@ -52,6 +53,8 @@ class Student {
 	public void setName(String name) {this.name =name;}
 	public String getCourse() {return course; }
 	public void setCourse(String course) {this.course = course;}
+	public String getAddress() {return address; }
+	public void setAddress(String address) {this.address = address;}
 }
 
 interface StudentRepository extends JpaRepository<Student, Long> {}
