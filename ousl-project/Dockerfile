@@ -7,7 +7,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 #stage 2: Minimal hardend runtime
-FROM eclipse-temurin-17-jre-alpine
+FROM eclipse-temurin:17-jre-alpine-3.24
 WORKDIR /app
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 USER appuser
